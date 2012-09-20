@@ -62,4 +62,12 @@ when "play"
 	response = Net::HTTP.get_response(URI.parse("#{api_url}/ojn_api/bunny/#{sn}/webradio/play?token=#{token}&name=#{URI.escape(text)}")).body
 	responsedoc = REXML::Document.new(response)
         puts responsedoc.root[0][0]
+when "MoveEar"
+        response = Net::HTTP.get_response(URI.parse("#{api_url}/ojn_api/bunny/#{sn}/test/moveEar?token=#{token}&left=#{URI.escape(ARGV[1])}&right=#{URI.escape(ARGV[2])}")).body
+        responsedoc = REXML::Document.new(response)
+        puts responsedoc.root[0][0]
+when "ambient"
+	response = Net::HTTP.get_response(URI.parse("#{api_url}/ojn_api/bunny/#{sn}/test/test?token=#{token}&type=#{URI.escape("ambient")}")).body
+when "chor"
+	response = Net::HTTP.get_response(URI.parse("#{api_url}/ojn_api/bunny/#{sn}/test/test?token=#{token}&type=#{URI.escape("chor")}")).body
 end
